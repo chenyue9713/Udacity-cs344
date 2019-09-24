@@ -2,21 +2,23 @@
 
 #include <iostream>
 #include "timer.h"
-#include "utils.h"
+//#include "utils.h"
 #include <string>
 #include <stdio.h>
 #include "reference_calc.h"
 #include "compare.h"
+//include the definitions of the above functions for this homework
+#include "HW1.h"
 
 void your_rgba_to_greyscale(const uchar4 * const h_rgbaImage, 
                             uchar4 * const d_rgbaImage,
                             unsigned char* const d_greyImage, 
                             size_t numRows, size_t numCols);
 
-//include the definitions of the above functions for this homework
-#include "HW1.cpp"
 
-int main(int argc, char **argv) {
+
+
+int main(int argc, char **argv){
   uchar4        *h_rgbaImage, *d_rgbaImage;
   unsigned char *h_greyImage, *d_greyImage;
 
@@ -55,6 +57,11 @@ int main(int argc, char **argv) {
       std::cerr << "Usage: ./HW1 input_file [output_filename] [reference_filename] [perPixelError] [globalError]" << std::endl;
       exit(1);
   }
+
+//  input_file  = std::string("cinque_terre_small.jpg");
+//  output_file = std::string("HW1_output.png");
+//  reference_file = std::string("HW1_reference.png");
+
   //load the image and give us our input and output pointers
   preProcess(&h_rgbaImage, &h_greyImage, &d_rgbaImage, &d_greyImage, input_file);
 
