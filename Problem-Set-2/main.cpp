@@ -10,7 +10,7 @@
 #include "compare.h"
 
 //include the definitions of the above functions for this homework
-#include "HW2.cpp"
+#include "HW2.h"
 
 
 /*******  DEFINED IN student_func.cu *********/
@@ -43,35 +43,40 @@ int main(int argc, char **argv) {
   double perPixelError = 0.0;
   double globalError   = 0.0;
   bool useEpsCheck = false;
-  switch (argc)
-  {
-	case 2:
-	  input_file = std::string(argv[1]);
-	  output_file = "HW2_output.png";
-	  reference_file = "HW2_reference.png";
-	  break;
-	case 3:
-	  input_file  = std::string(argv[1]);
-      output_file = std::string(argv[2]);
-	  reference_file = "HW2_reference.png";
-	  break;
-	case 4:
-	  input_file  = std::string(argv[1]);
-      output_file = std::string(argv[2]);
-	  reference_file = std::string(argv[3]);
-	  break;
-	case 6:
-	  useEpsCheck=true;
-	  input_file  = std::string(argv[1]);
-	  output_file = std::string(argv[2]);
-	  reference_file = std::string(argv[3]);
-	  perPixelError = atof(argv[4]);
-      globalError   = atof(argv[5]);
-	  break;
-	default:
-      std::cerr << "Usage: ./HW2 input_file [output_filename] [reference_filename] [perPixelError] [globalError]" << std::endl;
-      exit(1);
-  }
+//  switch (argc)
+//  {
+//	case 2:
+//	  input_file = std::string(argv[1]);
+//	  output_file = "HW2_output.png";
+//	  reference_file = "HW2_reference.png";
+//	  break;
+//	case 3:
+//	  input_file  = std::string(argv[1]);
+//      output_file = std::string(argv[2]);
+//	  reference_file = "HW2_reference.png";
+//	  break;
+//	case 4:
+//	  input_file  = std::string(argv[1]);
+//      output_file = std::string(argv[2]);
+//	  reference_file = std::string(argv[3]);
+//	  break;
+//	case 6:
+//	  useEpsCheck=true;
+//	  input_file  = std::string(argv[1]);
+//	  output_file = std::string(argv[2]);
+//	  reference_file = std::string(argv[3]);
+//	  perPixelError = atof(argv[4]);
+//      globalError   = atof(argv[5]);
+//	  break;
+//	default:
+//      std::cerr << "Usage: ./HW2 input_file [output_filename] [reference_filename] [perPixelError] [globalError]" << std::endl;
+//      exit(1);
+//  }
+
+  input_file = "cinque_terre_small.jpg";
+  output_file = "HW2_output.png";
+  reference_file = "HW2_reference.png";
+
   //load the image and give us our input and output pointers
   preProcess(&h_inputImageRGBA, &h_outputImageRGBA, &d_inputImageRGBA, &d_outputImageRGBA,
              &d_redBlurred, &d_greenBlurred, &d_blueBlurred,
