@@ -73,6 +73,10 @@ int main(int argc, char **argv) {
       std::cerr << "Usage: ./HW3 input_file [output_filename] [reference_filename] [perPixelError] [globalError]" << std::endl;
       exit(1);
   }
+
+//  input_file = "memorial_raw_large.png";
+//  output_file = "HW3_output_large.png";
+//  reference_file = "HW3_reference_large.png";
   //load the image and give us our input and output pointers
   preProcess(&d_luminance, &d_cdf,
              &numRows, &numCols, &numBins, input_file);

@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cassert>
+#include <iostream>
 
 void referenceCalculation(const float* const h_logLuminance, unsigned int* const h_cdf,
                           const size_t numRows, const size_t numCols, const size_t numBins, 
@@ -14,6 +15,8 @@ void referenceCalculation(const float* const h_logLuminance, unsigned int* const
     logLumMin = std::min(h_logLuminance[i], logLumMin);
     logLumMax = std::max(h_logLuminance[i], logLumMax);
   }
+  std::cout << logLumMin << std::endl;
+  std::cout << logLumMax << std::endl;
 
   //Step 2
   float logLumRange = logLumMax - logLumMin;
@@ -30,6 +33,11 @@ void referenceCalculation(const float* const h_logLuminance, unsigned int* const
                            static_cast<unsigned int>((h_logLuminance[i] - logLumMin) / logLumRange * numBins));
     histo[bin]++;
   }
+
+  //debug
+//  for (size_t i = 0; i < numBins; ++i)
+//	  std::cout << histo[i] << " ";
+//  std::cout << std::endl;
 
   //Step 4
   //finally we perform and exclusive scan (prefix sum)
